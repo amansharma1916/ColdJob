@@ -15,7 +15,6 @@ export function ProfilePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { stats } = useDashboard();
-  console.log("user", user);
 
   const statsData = stats.data?.data?.data.counts || {};
   const statsSummary = stats.data?.data?.data.summary || {};
