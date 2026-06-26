@@ -17,7 +17,8 @@ export function AuthProvider({ children }) {
       }
       try {
         const response = await getCurrentUser();
-        setUser(response.data);
+        const user = response.data?.data?.user || response.data;
+        setUser(user);
         setIsAuthenticated(true);
       } catch {
         localStorage.removeItem('cc_token');

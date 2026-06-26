@@ -41,7 +41,7 @@ export function SidebarFooter({ isCollapsed }) {
                 onClick={() => navigate('/profile')}
                 className="w-full flex justify-center px-3 py-2 rounded-md text-gray-600 hover:bg-gray-50 transition-colors"
               >
-                <Avatar src={user?.data?.user?.avatar} name={user?.name} size="" />
+                <Avatar src={user?.avatar} name={user?.name} size="" />
               </button>
             </Tooltip>
             <Tooltip content="Logout" position="right">
@@ -62,7 +62,7 @@ export function SidebarFooter({ isCollapsed }) {
                 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               )}
             >
-              <Avatar src={user?.data?.user?.avatar} name={user?.name} size="sm" />
+              <Avatar src={user?.avatar} name={user?.name} size="sm" />
               <div className="flex-1 text-left truncate">
                 <p className="text-sm font-medium text-gray-900 truncate">{user?.name}</p>
                 <p className="text-xs text-gray-500 truncate">{user?.email}</p>

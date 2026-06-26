@@ -25,7 +25,7 @@ export function ProfileMenu() {
         className="flex items-center gap-2 rounded-md p-1 hover:bg-gray-50 transition-colors"
         aria-label="Profile menu"
       >
-        <Avatar src={user?.data?.user?.avatar} name={user?.name} size="sm" />
+        <Avatar src={user?.avatar} name={user?.name} size="sm" />
         <span className="hidden lg:inline text-sm font-medium text-gray-700 truncate max-w-[100px]">
           {user?.name}
         </span>

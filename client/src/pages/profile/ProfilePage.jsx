@@ -15,6 +15,7 @@ export function ProfilePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const { stats } = useDashboard();
+  console.log("user", user);
 
   const statsData = stats.data?.data?.data.counts || {};
   const statsSummary = stats.data?.data?.data.summary || {};
@@ -39,7 +40,7 @@ export function ProfilePage() {
 
       <div className="bg-white border border-gray-200 rounded-lg p-8 text-center mb-6">
         <div className="flex justify-center mb-4">
-          <Avatar src={user?.data?.user?.avatar} name={user.name} size="xl" />
+          <Avatar src={user?.avatar} name={user.name} size="xl" />
         </div>
         <h2 className="text-xl font-semibold text-gray-900 mb-1">{user.name}</h2>
         <p className="text-sm text-gray-500 mb-3">{user.email}</p>

@@ -24,8 +24,6 @@ export function SettingsPage() {
   const { list: settingsList, update, updateSig, disconnect, removeAccount } = useSettings();
   const { list: templatesList, setDefault: setDefaultTemplate } = useTemplates();
   const { list: resumesList, setDefault: setDefaultResume } = useResumes();
-  const [userData, setUserData] = useState(null);
-
   const [showDisconnectConfirm, setShowDisconnectConfirm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteText, setDeleteText] = useState('');
@@ -72,12 +70,6 @@ export function SettingsPage() {
     }
   }, [settingsList.data]);
 
-  useEffect(() => {
-    if (user.data){
-      setUserData(user?.data?.user);  
-    }
-  }, [user.data]);
-
   const signature = settings.signature || watchSig('signature') || '';
 
   return (
@@ -109,8 +101,8 @@ export function SettingsPage() {
         <section>
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Profile</h3>
           <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-3">
-            <Input label="Name" value={userData?.name || ''} disabled />
-            <Input label="Email" value={userData?.email || ''} disabled />
+            <Input label="Name" value={user?.name || ''} disabled />
+            <Input label="Email" value={user?.email || ''} disabled />
             <p className="text-xs text-gray-400">
               To update your name or email, visit your Google account settings.
             </p>
