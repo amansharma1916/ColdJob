@@ -11,7 +11,6 @@ import { Divider } from '@/components/common/Divider';
 import { Badge } from '@/components/common/Badge';
 import { ConfirmDialog } from '@/components/common/ConfirmDialog';
 import { useSettings } from '@/hooks/useSettings';
-import toast from 'react-hot-toast';
 import { useTemplates } from '@/hooks/useTemplates';
 import { useResumes } from '@/hooks/useResumes';
 import { useForm } from 'react-hook-form';
