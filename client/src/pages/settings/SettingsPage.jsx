@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { LuCheck, LuTriangleAlert, LuX, LuStar } from 'react-icons/lu';
 import { pageTransition } from '@/animations/variants';
@@ -28,34 +28,48 @@ export function SettingsPage() {
   const [showDisconnectConfirm, setShowDisconnectConfirm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteText, setDeleteText] = useState('');
+  
 
   const settings = settingsList.data?.data?.data || {};
   const templates = templatesList?.data?.data?.data?.data || [];
   const resumes = resumesList?.data?.data?.data?.data || [];
-  console.log('Settings:', settings);
-  console.log('Templates:', templates);
-  console.log('Resumes:', resumes);
 
-  const { register: regDefaults, handleSubmit: handleDefaultsSubmit } = useForm({
+
+  const { register: regDefaults, handleSubmit: handleDefaultsSubmit, reset: resetDefaults } = useForm({
     defaultValues: {
       defaultTemplateId: settings.defaultTemplateId || '',
       defaultResumeId: settings.defaultResumeId || '',
     },
   });
 
-  const { register: regSignature, handleSubmit: handleSignatureSubmit, watch: watchSig, setValue: setSigValue } = useForm({
+  const { register: regSignature, handleSubmit: handleSignatureSubmit, watch: watchSig, setValue: setSigValue, reset: resetSig } = useForm({
     defaultValues: {
       signature: settings.signature || '',
     },
   });
 
-  const { register: regNotifications } = useForm({
+  const { register: regNotifications, reset: resetNotif } = useForm({
     defaultValues: {
       emailSentConfirmation: settings.emailSentConfirmation ?? true,
       failedEmailAlerts: settings.failedEmailAlerts ?? true,
       weeklySummary: settings.weeklySummary ?? false,
     },
   });
+
+  useEffect(() => {
+    if (settingsList.isSuccess && settingsList.data) {
+      resetDefaults({
+        defaultTemplateId: settings.defaultTemplateId || '',
+        defaultResumeId: settings.defaultResumeId || '',
+      });
+      resetSig({ signature: settings.signature || '' });
+      resetNotif({
+        emailSentConfirmation: settings.emailSentConfirmation ?? true,
+        failedEmailAlerts: settings.failedEmailAlerts ?? true,
+        weeklySummary: settings.weeklySummary ?? false,
+      });
+    }
+  }, [settingsList.data]);
 
   const signature = settings.signature || watchSig('signature') || '';
 
