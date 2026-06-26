@@ -7,6 +7,9 @@ import { AuthLayout } from '@/layouts/AuthLayout';
 import { PageLayout } from '@/layouts/PageLayout';
 
 import { LoginPage } from '@/pages/auth/LoginPage';
+import { PrivacyPolicyPage } from '@/pages/auth/PrivacyPolicyPage';
+import { TermsOfServicePage } from '@/pages/auth/TermsOfServicePage';
+import { ContactPage } from '@/pages/auth/ContactPage';
 import { DashboardPage } from '@/pages/dashboard/DashboardPage';
 import { ComposePage } from '@/pages/compose/ComposePage';
 import { TemplatesPage } from '@/pages/templates/TemplatesPage';
@@ -37,6 +40,32 @@ export function AppRouter() {
               <LoginPage />
             </AuthLayout>
           </PublicRoute>
+        }
+      />
+
+      {/* Public info pages (no auth needed) */}
+      <Route
+        path={ROUTES.PRIVACY}
+        element={
+          <AuthLayout>
+            <PrivacyPolicyPage />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path={ROUTES.TERMS}
+        element={
+          <AuthLayout>
+            <TermsOfServicePage />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path={ROUTES.CONTACT}
+        element={
+          <AuthLayout>
+            <ContactPage />
+          </AuthLayout>
         }
       />
 
