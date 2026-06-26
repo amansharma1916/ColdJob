@@ -1,0 +1,8 @@
+# robots.txt for Colder - Cold Email System
+# https://coldjob.amansharma.tech
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://coldjob.amansharma.tech/sitemap.xml
