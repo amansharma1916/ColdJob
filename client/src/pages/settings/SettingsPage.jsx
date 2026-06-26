@@ -11,6 +11,7 @@ import { Divider } from '@/components/common/Divider';
 import { Badge } from '@/components/common/Badge';
 import { ConfirmDialog } from '@/components/common/ConfirmDialog';
 import { useSettings } from '@/hooks/useSettings';
+import toast from 'react-hot-toast';
 import { useTemplates } from '@/hooks/useTemplates';
 import { useResumes } from '@/hooks/useResumes';
 import { useForm } from 'react-hook-form';
@@ -319,7 +320,8 @@ export function SettingsPage() {
         isOpen={showDeleteConfirm}
         onClose={() => setShowDeleteConfirm(false)}
         onConfirm={() => {
-          removeAccount.mutate();
+          // removeAccount.mutate();
+          toast.error('Account deletion is disabled. Please contact support if you want to delete your account.');
           setShowDeleteConfirm(false);
         }}
         title="Delete Account"

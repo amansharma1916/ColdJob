@@ -45,7 +45,7 @@ export function HistoryPage() {
 
   const columns = [
     { key: 'recipient', label: 'Recipient', render: (row) => (
-      <span className="text-gray-900">{row.to?.[0] || row.recipient || '—'}</span>
+      <span className="text-gray-900">{row.to?.[0] || row.recipientEmail || '—'}</span>
     )},
     { key: 'subject', label: 'Subject', render: (row) => truncate(row.subject, 40) },
     { key: 'template', label: 'Template', render: (row) => row.templateName || '—' },
@@ -54,7 +54,7 @@ export function HistoryPage() {
       return <Badge variant={status.variant} size="sm">{status.label}</Badge>;
     }},
     { key: 'sentAt', label: 'Sent At', render: (row) => formatRelativeDate(row.createdAt || row.sentAt) },
-    { key: 'actions', label: '', render: (row) => (
+    { key: 'actions', label: 'Actions', render: (row) => (
       <div className="flex items-center gap-1">
         <button onClick={() => setSelectedEmail(row)} className="p-1.5 text-gray-400 hover:text-gray-600 rounded-md hover:bg-gray-100" aria-label="View"><LuEye className="h-4 w-4" /></button>
         {row.status === 'failed' && (
