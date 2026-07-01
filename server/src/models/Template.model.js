@@ -35,7 +35,7 @@ templateSchema.pre('save', function (next) {
   } else {
     this.placeholders = [];
   }
-  // next();
+  next();
 });
 
 const Template = mongoose.model('Template', templateSchema);
