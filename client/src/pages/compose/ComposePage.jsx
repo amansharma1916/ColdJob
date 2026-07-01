@@ -144,7 +144,7 @@ export function ComposePage() {
       const payload = {
         templateId: watch('templateId') || '',
         contactId: contactId || '',
-        recipientEmail: recipientEmail || '',
+        recipientEmail: recipientEmail?.trim() || '',
       };
       const result = await preview.mutateAsync(payload);
       setPreviewData(result);
@@ -161,7 +161,7 @@ export function ComposePage() {
       }
       setShowConfirmSend(true);
     } else {
-      if (!recipientEmail && !contactId) {
+      if (!recipientEmail?.trim() && !contactId) {
         toast.error('Select a recipient or enter an email');
         return;
       }
@@ -171,7 +171,7 @@ export function ComposePage() {
 
   const buildPayload = (overrides = {}) => {
     const payload = {
-      ...(recipientEmail ? { recipientEmail } : {}),
+      ...(recipientEmail?.trim() ? { recipientEmail: recipientEmail.trim() } : {}),
       ...(contactId ? { contactId } : {}),
       subject: watch('subject'),
       body: watch('body'),
@@ -483,7 +483,7 @@ export function ComposePage() {
                 type="button"
                 leftIcon={LuSend}
                 isLoading={isSending}
-                disabled={sendMode === 'bulk' ? (selectedContactIds.length === 0 && manualEmailList.length === 0) : !recipientEmail && !contactId}
+                disabled={sendMode === 'bulk' ? (selectedContactIds.length === 0 && manualEmailList.length === 0) : !recipientEmail?.trim() && !contactId}
                 onClick={handleSendClick}
               >
                 {sendMode === 'bulk' ? 'Send Bulk' : 'Send'}
