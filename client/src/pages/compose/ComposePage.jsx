@@ -476,9 +476,9 @@ export function ComposePage() {
               <Button type="button" variant="ghost" onClick={() => navigate('/dashboard')}>
                 Cancel
               </Button>
-              <Button type="button" variant="outline" leftIcon={LuEye} onClick={handlePreview}>
+              {/* <Button type="button" variant="outline" leftIcon={LuEye} onClick={handlePreview}>
                 Preview
-              </Button>
+              </Button> */}
               <Button
                 type="button"
                 leftIcon={LuSend}
